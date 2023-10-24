@@ -1,17 +1,16 @@
 memory = new Array(110);
 ip = 0;
 
-  var FSO = new ActiveXObject("Scripting.FileSystemObject");
-  f = FSO.OpenTextFile("C:\\Users\\Андрей\\Desktop\\BABAND скрипты\\factorial.txt", 1);
-  var fileContent = f.ReadAll();
-  f.close();
-
-words = fileContent.split();
-for (var i = 0; i < words.length; i++) memory[i] = words[i];
+fso = new ActiveXObject("Scripting.FileSystemObject");
+text_prog = fso.OpenTextFile("nod.txt");
+var s = ""
+while(!text_prog.AtEndOfStream) s += text_prog.ReadLine() + " ";
+memory = s.split(" ");
+text_prog.close();
 
 while (true)
 {
-	if (memory[i] == '.') break;
+	if (memory[ip] == '.') break;
 	switch (memory[ip])
 	{
 		case "var":
@@ -59,13 +58,14 @@ while (true)
 			ip += 3;
 			break;
 		case "console.input": 
-			memory[memory[ip+1]] = WScript.StdIn.ReadLine();
-			break;
+			let i = prompt("Give me a value");
+			memory[memory[ip+1]] = i;
 			ip += 2;	
+			break;
 		case "console.output": 
 			WScript.echo(memory[memory[ip+1]]);
-			break;
 			ip += 2;
+			break; 
 		case "=":
 			if (memory[memory[ip+1]] == memory[memory[ip+2]]) memory[memory[ip+3]] = 1;
 			else memory[memory[ip+3]] = 0;
