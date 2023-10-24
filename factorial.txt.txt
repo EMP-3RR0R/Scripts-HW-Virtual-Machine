@@ -1,0 +1,12 @@
+console.input 100
+var 101 1
+var 102 1
+var 103 2
+< 103 100 104
+if 104 13
+++ 103 1
+- 102 101 102
+- 101 102 101
+goto 11
+console.output 102
+.
