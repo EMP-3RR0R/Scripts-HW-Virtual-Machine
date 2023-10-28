@@ -1,0 +1,10 @@
+console.input 100
+console.input 101
+!0 100 101
+!== 101 0 102
+if 102 9
+/ 100 101 100
+swap 100 101
+goto 7
+console.output 100
+.
